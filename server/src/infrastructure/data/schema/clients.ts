@@ -5,5 +5,5 @@ export const clients = pgTable('clients', {
     name: varchar('name', { length: 255}).notNull(),
     firstName: varchar('firstName', { length: 255}).notNull(),
     phone: varchar('phone', { length: 50}).notNull(),
-    createdAt: timestamp('date').defaultNow().notNull()
+    createdAt: timestamp('date').defaultNow()
 })

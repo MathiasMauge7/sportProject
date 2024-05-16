@@ -11,8 +11,7 @@ export class ClientRepository {
                 // On sélectionne les colonnes que l'on veut récupérer
                 columns: {
                     id: true,
-                    username: true
-                    // On ne récupère ni le mot de passe, ni le refreshToken (pour des raisons de sécurité)
+                    name: true
                 }
             });
         } catch (error) {
@@ -27,7 +26,22 @@ export class ClientRepository {
                 where: eq(clients.id, id),
                 columns: {
                     id: true,
-                    username: true
+                    name: true
+                }
+            })
+        } catch (error) {
+            console.error(error);
+            throw new Error("Impossible de récupérer l'utilisateur");
+        }
+    }
+
+    getClientByName(name: string): Promise<Partial<Client | undefined>> {
+        try {
+            return db.query.clients.findFirst({
+                where: eq(clients.name, name),
+                columns: {
+                    id: true,
+                    name: true
                 }
             })
         } catch (error) {
@@ -53,6 +67,5 @@ export class ClientRepository {
         throw new Error("Impossible de mettre à jour l'utilisateur");
     }
 }
-
 
 }

@@ -29,4 +29,25 @@ export class AchatRepository {
         }
     }
 
+        // Récupérer tout les posts existants dans notre posts.json
+    async getAllAchats(): Promise<any> {
+
+        try {
+            return db.query.achats.findMany({
+                // On sélectionne les colonnes que l'on veut récupérer
+                columns: {
+                    id: true,
+                    client: true,
+                    amount: true,
+                    date: true
+                }
+            });
+        } catch (error) {
+            console.error(error);
+            throw new Error("Impossible de récupérer tout les achats");
+        }
+    }
+
+    
+
 }
