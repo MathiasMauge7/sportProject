@@ -1,11 +1,11 @@
-import { achat } from "./achat";
+import { achats } from "./achats";
 import { clients } from "./clients";
 import { produits } from "./produits";
-import { promotion } from "./promotion";
+import { promotions } from "./promotions";
 
 export {
-    achat,
+    achats,
     clients,
     produits,
-    promotion
+    promotions
 }

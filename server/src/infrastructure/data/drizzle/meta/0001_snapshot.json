@@ -1,11 +1,11 @@
 {
-  "id": "4a8069bb-ba2f-44dd-9825-339f4d1c80f3",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "4ff42405-4e13-485a-835a-79ed8267ff86",
+  "prevId": "4a8069bb-ba2f-44dd-9825-339f4d1c80f3",
   "version": "6",
   "dialect": "postgresql",
   "tables": {
-    "public.achat": {
-      "name": "achat",
+    "public.achats": {
+      "name": "achats",
       "schema": "",
       "columns": {
         "id": {
@@ -15,8 +15,8 @@
           "notNull": true,
           "default": "gen_random_uuid()"
         },
-        "clientId": {
-          "name": "clientId",
+        "client": {
+          "name": "client",
           "type": "uuid",
           "primaryKey": false,
           "notNull": true
@@ -43,12 +43,12 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "achat_clientId_clients_id_fk": {
-          "name": "achat_clientId_clients_id_fk",
-          "tableFrom": "achat",
+        "achats_client_clients_id_fk": {
+          "name": "achats_client_clients_id_fk",
+          "tableFrom": "achats",
           "tableTo": "clients",
           "columnsFrom": [
-            "clientId"
+            "client"
           ],
           "columnsTo": [
             "id"
@@ -150,8 +150,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "public.promotion": {
-      "name": "promotion",
+    "public.promotions": {
+      "name": "promotions",
       "schema": "",
       "columns": {
         "id": {

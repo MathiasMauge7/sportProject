@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS "achat" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"clientId" uuid NOT NULL,
-	"" real NOT NULL,
+	"amount" real NOT NULL,
 	"paymentMode" varchar NOT NULL,
 	"date" timestamp DEFAULT now() NOT NULL
 );
@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS "clients" (
 CREATE TABLE IF NOT EXISTS "produits" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"name" varchar(255) NOT NULL,
-	"" real NOT NULL,
+	"price" real NOT NULL,
 	"boolean" boolean NOT NULL,
 	"category" varchar(255) NOT NULL,
 	"date" timestamp DEFAULT now() NOT NULL

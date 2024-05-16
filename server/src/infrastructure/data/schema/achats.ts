@@ -1,11 +1,10 @@
 import { pgTable, uuid, varchar, timestamp, real} from "drizzle-orm/pg-core";
 import { clients } from "./clients";
-import { produits } from "./produits";
 
-export const achat = pgTable('achat', {
+export const achats = pgTable('achats', {
     id: uuid('id').defaultRandom().primaryKey(), // pk
-    clientId: uuid('clientId').references(() => clients.id).notNull(), // foreign key
-    amount: real('').notNull(),
+    client: uuid('client').references(() => clients.id).notNull(), // foreign key
+    amount: real('amount').notNull(),
     paymentMode: varchar('paymentMode').notNull(),
     date: timestamp('date').defaultNow().notNull()
 })

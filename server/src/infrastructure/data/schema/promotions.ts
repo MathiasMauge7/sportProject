@@ -1,6 +1,6 @@
 import { pgTable, uuid, varchar, timestamp, integer} from "drizzle-orm/pg-core";
 
-export const promotion = pgTable('promotion', {
+export const promotions = pgTable('promotions', {
     id: uuid('id').defaultRandom().primaryKey(),
     name: varchar('name', { length: 255}).notNull(),
     pourcent: integer('int'),
