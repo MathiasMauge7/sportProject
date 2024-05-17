@@ -1,7 +1,5 @@
 import { NewAchat } from "../entities/Achat";
 import { AchatRepository } from "../../infrastructure/repositories/AchatRepository";
-import { sql } from "drizzle-orm";
-import { db } from "../../infrastructure/data";
 import { ClientRepository } from "../../infrastructure/repositories/ClientRepository";
 
 export class AchatService {

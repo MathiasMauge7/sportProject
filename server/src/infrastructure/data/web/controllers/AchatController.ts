@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import { AchatService } from "../../../../domain/services/AchatService";
 import { response } from "../../../../utils/response";
 import { CustomRequest } from "../../../../types/express";
-import { clients } from "../../schema";
 
 const achatService = new AchatService();
 

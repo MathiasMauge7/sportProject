@@ -34,13 +34,13 @@ describe("AchatService", () => {
     await db.execute(sql`SET search_path TO test`);
   });
 
-  it("should add a new post", async () => {
+  it("should add a new achat", async () => {
     await db.execute(sql`SET search_path TO test`);
     createdAchatId = await achatService.addAchat(newAchat);
     expect(createdAchatId).toBeTruthy();
   });
 
-  it("should get a post by its id", async () => {
+  it("should get a achat by its id", async () => {
     await db.execute(sql`SET search_path TO test`);
     const achat = await achatService.getAchatById(createdAchatId || "");
     expect(achat[0]).toEqual(
@@ -59,7 +59,7 @@ describe("AchatService", () => {
     );
   });
 
-  it("should get all posts", async () => {
+  it("should get all achats", async () => {
     await db.execute(sql`SET search_path TO test`);
     const achats = await achatService.getAllAchats();
     achats.forEach((achat: any) => {

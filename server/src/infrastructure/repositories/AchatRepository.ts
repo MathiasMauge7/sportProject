@@ -68,11 +68,11 @@ export class AchatRepository {
   }
 
   //   Sauvegarder un achat dans la db
-  saveAchat(post: NewAchat) {
+  saveAchat(achat: NewAchat) {
     try {
       return db
         .insert(achats)
-        .values(post)
+        .values(achat)
         .returning({ id: achats.id })
         .execute();
     } catch (err) {
