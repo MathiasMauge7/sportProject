@@ -1,20 +1,14 @@
-import { produits } from './../../schema/produits';
+import { produits } from "./../../schema/produits";
 import { Request, Response } from "express";
-import { response } from "../../../../utils/response"; 
-import { ProduitService } from "../../../../domain/services/ProduitService"; 
-import { NewProduit } from '../../../../domain/entities/Produit';
+import { response } from "../../../../utils/response";
+import { ProduitService } from "../../../../domain/services/ProduitService";
+import { NewProduit } from "../../../../domain/entities/Produit";
 
 const produitService = new ProduitService();
 
-/**
- * afficher à l'écran l'ensemble des commentaires d'un article filtré via son id  
- * @param req - requête http gérée via  express
- * @param res - reponse http gérée par express 
- * @see [super explication en +](https://typedoc.org/tags/see/)
- */
 export const getProduitByAchatId = async (req: Request, res: Response) => {
-    const { id } = req.params;
-      if (!id) {
+  const { id } = req.params;
+  if (!id) {
     response(res, { statusCode: 404, message: "Aucun produit à cette id." });
   } else {
     const produits = await produitService.getProduitByAchatId(id);
@@ -33,19 +27,18 @@ export const getProduitById = async (req: Request, res: Response) => {
   }
 };
 
-
 export const deleteProduitById = async (req: Request, res: Response) => {
-    const { id } = req.params;
-    await produitService.deleteProduitById(id);
-    response(res, { statusCode: 200, message: 'Comment deleted' });
-}
+  const { id } = req.params;
+  await produitService.deleteProduitById(id);
+  response(res, { statusCode: 200, message: "Comment deleted" });
+};
 
 // localhost:8000/comments/:idDeLarticle
 export const createProduit = async (req: Request, res: Response) => {
-    const { produit }: NewProduit = req.params;
-    await produitService.createProduit(produit);
-    response(res, { statusCode: 201, message: 'Produit created' });
-}
+  const { produit }: NewProduit = req.params;
+  await produitService.createProduit(produit);
+  response(res, { statusCode: 201, message: "Produit created" });
+};
 
 export const getAllProduits = async (req: Request, res: Response) => {
   const produits = await produitService.getAllProduits();

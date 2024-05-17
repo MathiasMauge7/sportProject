@@ -11,8 +11,8 @@ export class AchatRepository {
           id: achats.id,
           amount: achats.amount,
           client: {
-            // On récupère l'auteur du post, et on décide de comment on veut le formater
-            id: clients.id, // On récupère l'id de l'auteur, et son nom d'utilisateur
+            // On récupère le client correspondant à l'achat, et on décide de comment on veut le formater
+            id: clients.id, // On récupère l'id du clien et son nom
             name: clients.name,
           },
           date: achats.date,
@@ -21,15 +21,15 @@ export class AchatRepository {
         .leftJoin(
           // Nous voulons faire un LEFT JOIN entre la table achats et la table produits
           produits,
-          eq(achats.id, produits.id) // Lorsque l'id du post est égal à l'id du post dans les commentaires
+          eq(achats.id, produits.id)
         )
         .leftJoin(
           // Nous voulons faire un LEFT JOIN entre la table achats et la table clients
           clients,
-          eq(achats.id, clients.id) // Lorsque l'id de l'auteur du post est égal à l'id de l'utilisateur
+          eq(achats.id, clients.id) // Lorsque l'id du client correspondant à l'achat est égal à l'id du client recherché
         )
         .where(
-          // Nous cherchons le post en fonction de son id
+          // Nous cherchons l'achat en fonction de son id
           eq(achats.id, id)
         )
         .execute();
@@ -39,7 +39,7 @@ export class AchatRepository {
     }
   }
 
-  // Récupérer tout les posts existants dans notre posts.json
+  // Récupérer tout les achats existants dans notre db
   async getAllAchats(): Promise<any> {
     try {
       return db.query.achats.findMany({
